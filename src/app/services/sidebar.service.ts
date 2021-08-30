@@ -7,11 +7,10 @@ export class SidebarService {
   sidebarIsOpen: boolean = true;
   sidebar: any;
 
-  constructor() {
-    this.sidebar = document.getElementById('sidebar-container');
-  }
+  constructor() {}
 
   initSidebar = () => {
+    this.sidebar = document.getElementById('sidebar-container');
     this.sidebarIsOpen ? this.closeSidebar() : this.openSidebar();
   };
 
