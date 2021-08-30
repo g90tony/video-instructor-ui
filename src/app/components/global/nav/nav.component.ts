@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from 'src/app/services/sidebar.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,30 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  constructor() {}
-
-  sidebarIsOpen: boolean = true;
-  sidebar: any;
+  constructor(private sidebarToggler: SidebarService) {}
 
   ngOnInit(): void {
-    this.sidebar = document.getElementById('sidebar-container');
-
-    this.sidebarIsOpen ? this.closeSidebar() : this.openSidebar();
+    this.sidebarToggler.initSidebar();
   }
 
-  closeSidebar = () => {
-    this.sidebar.style.width = '0';
-    this.sidebar.style.transition = '750ms ease-in-out';
-    this.sidebarIsOpen = false;
-  };
-
-  openSidebar = () => {
-    this.sidebar.style.width = '200px';
-    this.sidebar.style.transition = '750ms ease-in';
-    this.sidebarIsOpen = true;
-  };
-
   toggleSidebar() {
-    this.sidebarIsOpen ? this.closeSidebar() : this.openSidebar();
+    this.sidebarToggler.toggleSidebar();
   }
 }
