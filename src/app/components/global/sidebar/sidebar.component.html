@@ -14,25 +14,37 @@
     </div>
   </div>
 
-  <a routerLink="/" class="sidebar-items width-50">
+  <a (click)="closeSidebar()" routerLink="/" class="sidebar-items width-50">
     <img src="../../../../assets/icons/home.svg" width="30px" />
     <p class="body-sm-bold primary-text text-start">Dashboard</p>
   </a>
-  <a routerLink="/courses/registered" class="sidebar-items width-50">
+  <a
+    (click)="closeSidebar()"
+    routerLink="/courses/registered"
+    class="sidebar-items width-50"
+  >
     <img src="../../../../assets/icons/registered.svg" width="30px" />
     <p class="body-sm-bold primary-text text-start">
       Registered <br />
       Courses
     </p>
   </a>
-  <a routerLink="/courses/browse" class="sidebar-items width-50">
+  <a
+    (click)="closeSidebar()"
+    routerLink="/courses/browse"
+    class="sidebar-items width-50"
+  >
     <img src="../../../../assets/icons/courses.svg" width="30px" />
     <p class="body-sm-bold primary-text text-start">
       Browse <br />
       Courses
     </p>
   </a>
-  <a routerLink="/profile/edit" class="sidebar-items width-50">
+  <a
+    (click)="closeSidebar()"
+    routerLink="/profile/edit"
+    class="sidebar-items width-50"
+  >
     <img src="../../../../assets/icons/profile.svg" width="30px" />
     <p class="body-sm-bold primary-text text-start">
       Edit <br />
