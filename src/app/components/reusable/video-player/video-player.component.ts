@@ -113,11 +113,13 @@ export class VideoPlayerComponent implements OnInit {
         break;
       case window['YT'].PlayerState.ENDED:
         console.log('ended ', this.lesson.lesson_id);
+
         this.registeredCourseService
           .mark_lesson_complete(this.courseID, this.lesson.lesson_id)
           .subscribe((res) => {
             this.completeLesson(res);
           });
+
         break;
     }
   }
@@ -140,5 +142,9 @@ export class VideoPlayerComponent implements OnInit {
 
   completeLesson(next_lesson: any) {
     this.complete_lesson.emit(next_lesson);
+  }
+
+  updateCurrentLesson(new_lesson: any) {
+    this.lesson = new_lesson;
   }
 }

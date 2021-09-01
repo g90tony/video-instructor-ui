@@ -69,6 +69,7 @@ export class RegisteredViewComponent implements OnInit {
   }
 
   onLessonChange(new_lesson: string) {
+    this.current_lesson = new_lesson;
     this.child.onloadNewLesson(new_lesson);
     console.log(new_lesson);
   }
