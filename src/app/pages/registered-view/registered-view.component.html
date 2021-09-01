@@ -22,12 +22,14 @@
     </div>
     <div class="row-start-static width-100">
       <app-video-player
+        [courseID]="course_id"
         [lesson]="current_lesson"
+        (complete_lesson)="onLessonComplete($event)"
         #youtube_player
       ></app-video-player>
     </div>
   </div>
-  <div id="lesson-column" class="column-start-static">
+  <div id="lesson-column" class="column-start-static container-x-sm">
     <div class="row-start-static width-100">
       <p class="body-lg-bold primary-text">Course Lessons</p>
     </div>

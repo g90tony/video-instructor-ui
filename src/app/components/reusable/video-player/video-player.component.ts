@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { RegisteredCoursesService } from 'src/app/services/registered-course/registered-course.service';
 
 @Component({
   selector: 'app-video-player',
@@ -7,8 +8,10 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class VideoPlayerComponent implements OnInit {
   @Input() lesson: any;
+  @Input() courseID: any;
+  @Output() complete_lesson = new EventEmitter();
 
-  title = 'dummyApp-YTIFrameAPI';
+  title = 'VideoInstructor_YTIFRAME';
   showVideo = true;
 
   /* 1. Some required variables which will be used by YT API*/
@@ -16,6 +19,8 @@ export class VideoPlayerComponent implements OnInit {
   public video: any;
   public player: any;
   public reframed: Boolean = false;
+
+  constructor(private registeredCourseService: RegisteredCoursesService) {}
 
   isRestricted = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -107,7 +112,12 @@ export class VideoPlayerComponent implements OnInit {
         }
         break;
       case window['YT'].PlayerState.ENDED:
-        console.log('ended ');
+        console.log('ended ', this.lesson.lesson_id);
+        this.registeredCourseService
+          .mark_lesson_complete(this.courseID, this.lesson.lesson_id)
+          .subscribe((res) => {
+            this.completeLesson(res);
+          });
         break;
     }
   }
@@ -126,5 +136,9 @@ export class VideoPlayerComponent implements OnInit {
       case 101 || 150:
         break;
     }
+  }
+
+  completeLesson(next_lesson: any) {
+    this.complete_lesson.emit(next_lesson);
   }
 }
