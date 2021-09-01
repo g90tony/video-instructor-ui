@@ -14,12 +14,22 @@
     class="column-start-static width-auto margin-x-sm"
   >
     <div class="loader width-100">
-      <img
-        class="border-circle light-background container-xs margin-auto"
-        src="../../../../assets/icons/play.svg"
-        alt=""
-        id="{{ item.id }}"
-      />
+      <div *ngIf="!item.is_complete; else isCompleted">
+        <img
+          class="border-circle light-background container-xs margin-auto"
+          src="../../../../assets/icons/play.svg"
+          alt=""
+          id="{{ item.id }}"
+        />
+      </div>
+      <ng-template #isCompleted>
+        <img
+          class="border-circle light-background container-xs margin-auto"
+          src="../../../../assets/icons/check.svg"
+          alt=""
+          id="{{ item.id }}"
+        />
+      </ng-template>
     </div>
   </div>
   <div
