@@ -53,9 +53,9 @@ export class RegisteredCoursesService {
     return this.http.get<any>(endpoint, this.httpOptions);
   }
 
-  mark_lesson_complete(course_id: any) {
+  mark_lesson_complete(course_id: any, lesson_id: any) {
     const stored_profile = this.userProfileService.get_authenticated_profile();
-    let endpoint = `${this.api_url}/api/progress/current/${course_id}/${stored_profile.id}`;
+    let endpoint = `${this.api_url}/api/progress/complete/${course_id}/${stored_profile.id}/${lesson_id}`;
 
     return this.http.post<any>(endpoint, this.httpOptions);
   }
