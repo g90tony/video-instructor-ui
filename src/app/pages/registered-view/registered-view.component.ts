@@ -63,7 +63,7 @@ export class RegisteredViewComponent implements OnInit {
       });
   }
 
-  currentLessonUpdate(new_lesson: any) {
+  onLessonComplete(new_lesson: any) {
     this.current_course = new_lesson;
     this.child.onloadNewLesson(new_lesson);
   }
