@@ -14,10 +14,15 @@
       Your Courses
     </p>
 
-    <form action="" class="inline-form width-auto">
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSubmit()"
+      class="inline-form width-auto"
+    >
       <input
         type="text"
         name="search"
+        formControlName="search"
         id="search"
         placeholder="Search registered courses..."
       />
