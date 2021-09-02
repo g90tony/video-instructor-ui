@@ -65,4 +65,11 @@ export class RegisteredCoursesService {
 
     return this.http.post<any>(endpoint, new_enrollment, this.httpOptions);
   }
+
+  get_search_query(search_query: string) {
+    const stored_profile = this.userProfileService.get_authenticated_profile();
+    let endpoint = `${this.api_url}/api/courses/registered/search/${stored_profile.id}/${search_query}`;
+
+    return this.http.get<any[]>(endpoint, this.httpOptions);
+  }
 }
