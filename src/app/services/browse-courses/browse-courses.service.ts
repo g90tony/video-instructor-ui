@@ -42,4 +42,10 @@ export class BrowseCoursesService {
 
     return this.http.get<any[]>(endpoint, this.httpOptions);
   }
+
+  get_search_query(search_query: string) {
+    let endpoint = `${this.api_url}/api/courses/browse/search/${search_query}`;
+
+    return this.http.get<any[]>(endpoint, this.httpOptions);
+  }
 }

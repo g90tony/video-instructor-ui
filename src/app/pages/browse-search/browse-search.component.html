@@ -1,27 +1,23 @@
-<div class="row-center-flexible">
+<div class="row-center-flexible margin-x-sm">
   <div class="column-start-static width-100">
     <div class="row-start-static">
       <p class="body-xl-bold margin-bottom-0">
         Search Results:
-        <span class="body-xl-regular primary-text">search_query</span>
+        <span class="body-xl-regular primary-text">{{ search_query }}</span>
       </p>
     </div>
     <div class="row-start-static">
       <p class="body-sm-bold">
-        123 Results found for <span class="primary-text">"search_query"</span>
+        {{ search_results_count }} Results found for
+        <span class="primary-text">"{{ search_query }}"</span>
       </p>
     </div>
   </div>
 </div>
 <div class="row-center-flexible width-80 margin-x-auto margin-top-0">
   <div class="row-start-flexible width-100">
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
-    <app-course-card></app-course-card>
+    <ng-template *ngFor="let item of search_results">
+      <app-course-card [item]="item"></app-course-card>
+    </ng-template>
   </div>
 </div>
